@@ -35,8 +35,6 @@ Il doit exister un bouton unique pour valider les entrées d’un seul tenant, c
 En cas d’entrée répétée un meme jour, la deuxième entrée efface la premiere.
 
 
-
-
 LDEV :
 Le tout sur github, créer :
 - un fichier models.py avec l’initialisation de la base, le lien avec le fichier .db, le chargement de la base dans le fichier avec les colonnes associées, la création de la session d’accès.
@@ -46,12 +44,16 @@ Outils à utiliser : Git, Python, SQLAlchemy
 - La base de donnée .db sera créé automatiquement mais il est utile d’avoir DB Browser Lite 
 Outils à utiliser : Git, Python, SQLAlchemy, DB Browser Lite
 Développement de la BDD pour connaitre les entrées Développement d’un outil local de visualisation associé (python) 
+
 ----- A ce stade, une V0.1 peut être ‘deployée’ en local car on doit avoir un code qui vient interagir avec une BDD et qui peut l’incrémenter / la décrémenter
 Développement d’un outil local d’input associé (python) 
+
 ----- Une V0.2 pourra être créée pour ajouter les fonctionnalités de la SPEC en terme d’input (cf ci-dessus)
 Développement de l’interface streamlit locale 
+
 ----- Une V0.3 pourra être créée pour ajouter l’interface web associée au code Python en local.
 Hébergement sur Heroku et déploiement via Github Push (erase data)
+
 ----- Une V1 pourra alors être déployée avec un usage en ligne
 Les prochaines améliorations comprendront : 
 Refonte de la BDD pour anonymiser les données

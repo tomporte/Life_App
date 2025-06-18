@@ -20,8 +20,8 @@ def ajouter_tache():
     satisfaction_pro = int(input("Description de la satisfaction_pro /10 : "))
     satisfaction_couple = int(input("Description de la satisfaction_couple /10 : "))
     stamina = int(input("Description de la stamina /10 : "))
-    session_couple = int(input("Description de la session_couple (1/0): "))
-    session_loisir = int(input("Description de la session_loisir (1/0): "))
+    session_couple = bool(input("Description de la session_couple (1/0): "))
+    session_loisir = bool(input("Description de la session_loisir (1/0): "))
     # session_sport = str(input("Description de la session_sport (Oui/Non): "))
     session_sport = get_from_list(liste_session_sport)
     # german_study = str(input("Description de la german_study (Oui/Non) : "))
@@ -90,22 +90,6 @@ def menu():
 
 
 # Temporary, to test the implementation of multi select choices
-def get_session_sport():
-    print("\n 0 = None, 1 = indoor_short, 2 = indoor_long, 3 = outdoor_short, 4 = outdoor_long, 5 = dedicated_day")
-    input_session_sport = int(input("Choice : "))
-    if input_session_sport == 1:
-        return "None"
-    elif input_session_sport == 2:
-        return "indoor_short"
-    elif input_session_sport == 3:
-        return "outdoor_short"
-    elif input_session_sport == 4:
-        return "outdoor_long"
-    elif input_session_sport == 5:
-        return "dedicated_day"
-    else:
-        return "None"
-
 def get_from_list(options):
     print(", ".join([f'{i} = "{val}"' for i, val in enumerate(options)]))
     input_from_list = int(input("Choice : "))
