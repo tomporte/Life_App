@@ -56,10 +56,11 @@ def lister_taches():
     #  database query with SQLAlchemy to get all the lines of the Life table
     input_data = session.query(Life).all()
     print("\n📋 Liste des entrées :")
+    liste_bdd = []
     for t in input_data:
-        print(f"{t.id}. {t.date} à {t.hour}h - pro: {t.satisfaction_pro} / couple: {t.satisfaction_couple} / stamina: {t.stamina}")
+        liste_bdd.append([t.id,t.date,t.hour,t.satisfaction_pro,t.satisfaction_couple,t.stamina])
     session.close()
-    return input_data
+    return liste_bdd
 
 def supprimer_tache():
     id_input_data = input("ID de l’entrée à supprimer : ")
@@ -131,6 +132,8 @@ if st.button("Valider l'entrée"):
 if st.button("Afficher data"):
     input_data_export = lister_taches()
     st.write(input_data_export)
+
+
     
 
 # if __name__ == "__main__":
