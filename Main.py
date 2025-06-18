@@ -12,21 +12,27 @@ speaking_time_std = 0
 liste_german_study = ["None","Anki","Anki+New","Anki+Lesson"]
 liste_session_sport = ["None", "indoor_short", "indoor_long", "outdoor_short", "outdoor_long", "dedicated_day"]
 
+# Import des sessions et du module de date/heure
+
 from models import Life, Session
 from datetime import datetime
 
-def ajouter_tache():
+############################
+# Définition des fonctions #
+############################
+
+
+def ajouter_tache(session_couple, session_loisir, satisfaction_pro, satisfaction_couple, stamina, session_sport, german_study, speaking_time):
     # Input manuel des informations
-    satisfaction_pro = int(input("Description de la satisfaction_pro /10 : "))
-    satisfaction_couple = int(input("Description de la satisfaction_couple /10 : "))
-    stamina = int(input("Description de la stamina /10 : "))
-    session_couple = bool(input("Description de la session_couple (1/0): "))
-    session_loisir = bool(input("Description de la session_loisir (1/0): "))
-    # session_sport = str(input("Description de la session_sport (Oui/Non): "))
-    session_sport = get_from_list(liste_session_sport)
-    # german_study = str(input("Description de la german_study (Oui/Non) : "))
-    german_study = get_from_list(liste_german_study)
-    speaking_time = int(input("Description de la speaking_time (min): "))
+    
+    # satisfaction_pro = int(input("Description de la satisfaction_pro /10 : "))
+    # satisfaction_couple = int(input("Description de la satisfaction_couple /10 : "))
+    # stamina = int(input("Description de la stamina /10 : "))
+    # session_couple = bool(input("Description de la session_couple (1/0): "))
+    # session_loisir = bool(input("Description de la session_loisir (1/0): "))
+    # session_sport = get_from_list(liste_session_sport)
+    # german_study = get_from_list(liste_german_study)
+    # speaking_time = int(input("Description de la speaking_time (min): "))
 
     # Real date and hour implemented
     now = datetime.now()
@@ -90,10 +96,37 @@ def menu():
 
 
 # Temporary, to test the implementation of multi select choices
-def get_from_list(options):
-    print(", ".join([f'{i} = "{val}"' for i, val in enumerate(options)]))
-    input_from_list = int(input("Choice : "))
-    return options[input_from_list]
+# def get_from_list(options):
+#     print(", ".join([f'{i} = "{val}"' for i, val in enumerate(options)]))
+#     input_from_list = int(input("Choice : "))
+#     return options[input_from_list]
 
-if __name__ == "__main__":
-    menu()
+#############################
+# Définition de l'interface #
+#############################
+
+import streamlit as st
+
+st.title("Data Life")
+
+# Cases à cocher (checkbox)
+session_couple = st.checkbox("Session couple")
+session_loisir = st.checkbox("Session loisir")
+
+# Slider
+satisfaction_pro = st.slider("Satisfaction pro", 0, 10, 5)
+satisfaction_couple = st.slider("Satisfaction couple", 0, 10, 5)
+stamina = st.slider("Stamina", 0, 10, 5)
+
+# Menu déroulant (selectbox)
+session_sport = st.selectbox("Session_sport", liste_session_sport)
+german_study = st.selectbox("German_study", liste_german_study)
+speaking_time = st.text_input("Speaking_time:")
+
+# Bouton d'input données
+if st.button("Valider l'entrée"):
+    ajouter_tache(session_couple, session_loisir, satisfaction_pro, satisfaction_couple, stamina, session_sport, german_study, speaking_time)
+    st.write("Entrée validée !")
+
+# if __name__ == "__main__":
+#     menu()
