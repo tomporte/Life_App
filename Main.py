@@ -59,6 +59,7 @@ def lister_taches():
     for t in input_data:
         print(f"{t.id}. {t.date} à {t.hour}h - pro: {t.satisfaction_pro} / couple: {t.satisfaction_couple} / stamina: {t.stamina}")
     session.close()
+    return input_data
 
 def supprimer_tache():
     id_input_data = input("ID de l’entrée à supprimer : ")
@@ -127,6 +128,10 @@ speaking_time = st.text_input("Speaking_time:")
 if st.button("Valider l'entrée"):
     ajouter_tache(session_couple, session_loisir, satisfaction_pro, satisfaction_couple, stamina, session_sport, german_study, speaking_time)
     st.write("Entrée validée !")
+if st.button("Afficher data"):
+    input_data_export = lister_taches()
+    st.write(input_data_export)
+    
 
 # if __name__ == "__main__":
 #     menu()
