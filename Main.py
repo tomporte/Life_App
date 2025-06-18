@@ -123,7 +123,7 @@ stamina = st.slider("Stamina", 0, 10, 5)
 # Menu déroulant (selectbox)
 session_sport = st.selectbox("Session_sport", liste_session_sport)
 german_study = st.selectbox("German_study", liste_german_study)
-speaking_time = st.text_input("Speaking_time:")
+speaking_time = st.text_input("Speaking_time allemand:")
 
 # Bouton d'input données
 if st.button("Valider l'entrée"):
